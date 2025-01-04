@@ -11,7 +11,7 @@ export default function App() {
           必要加湿量計算フォーム
         </Title>
         <Title order={6} mb={'sm'} c={'dimmed'}>
-          部屋に必要な加湿器のスペックを算出します。
+          部屋に必要な加湿器のスペックを算出します。あくまで参考程度に使ってください。
         </Title>
         <Form />
       </Container>

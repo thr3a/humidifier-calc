@@ -26,7 +26,7 @@ export const Form = (): JSX.Element => {
       roomTemperature: 20, // 室温 (°C)
       continuousOperationHours: 8, // 連続運転時間 (時間)
       ceilingHeight: 2.4, // 天井高 (m)
-      ventilationRate: 0.5, // 換気回数 (回/時)
+      ventilationRate: 1, // 換気回数 (回/時) 法律では0.5以上
       initialHumidity: 20, // 初期湿度(%)
       requiredHumidificationCapacity: 0,
       requiredTankCapacity: 0
@@ -86,10 +86,22 @@ export const Form = (): JSX.Element => {
           </Group>
         </Stack>
       </Box>
-      {form.values.requiredHumidificationCapacity && (
+      {form.values.requiredHumidificationCapacity > 0 && (
         <Alert title='計算結果' color='blue' mt={'md'}>
-          <Text>必要な加湿能力: {form.values.requiredHumidificationCapacity} mL/時</Text>
-          <Text>必要なタンク容量: {form.values.requiredTankCapacity} L</Text>
+          <Text>
+            必要な加湿能力:
+            <Text fw='bold' component='span'>
+              {form.values.requiredHumidificationCapacity}
+            </Text>
+            mL/時
+          </Text>
+          <Text>
+            必要なタンク容量:
+            <Text fw='bold' component='span'>
+              {form.values.requiredTankCapacity}
+            </Text>
+            L以上
+          </Text>
         </Alert>
       )}
     </FormProvider>
